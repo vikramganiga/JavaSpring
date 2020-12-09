@@ -1,0 +1,10 @@
+ - Qualifier - if you multiple beans of same type ( interface)
+ - Primary  - primary bean to inject when many same type beans available
+ - Component, Service  -  bean annotations 
+ - Autowire annotation only for property, setter bases injected, not for constructor bases injection 
+ - IOC - inversion control injection means dependency identified are run time 
+ 
+ Implement the property based injection
+ 
+ 
+ 

@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <context:property-placeholder location="application.properties"/>
+
+	<!-- Define your beans here -->
+
+	<bean id="Myfortune" class="com.xml.config.Fortune"></bean>
+
+	<bean id="myGolfCoach" class="com.xml.config.GolfCoaching">
+       <!-- dependency injection construction-->
+		<constructor-arg ref="Myfortune"></constructor-arg>
+	</bean>
 	
-    <!-- Define your beans here -->
-    
- 	<bean id="myGolfCoach"
- 		class="com.xml.config.GolfCoaching">	 		
- 	</bean>
-    
+
+	<bean id="myCricketCoach" class="com.xml.config.CricketCoaching">
+       <!-- dependency injection setter -->
+		<property name="fortune" ref="Myfortune"></property>
+		<property name="email" value="vikramganiga@gmail.com"></property>
+		<property name="sports" value="${sports}"></property>
+	</bean>
+	
+	
+	
+	 
+
 </beans>
 
 

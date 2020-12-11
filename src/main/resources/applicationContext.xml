@@ -26,9 +26,7 @@
 		<property name="sports" value="${sports}"></property>
 	</bean>
 	
-	
-	
-	 
+	<bean id="MyProtoTypeBean" class="com.xml.config.PrototypeBean"></bean>
 
 </beans>
 

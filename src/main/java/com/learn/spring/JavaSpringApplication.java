@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.xml.config.Coach;
+import com.xml.config.PrototypeBean;
 
 @SpringBootApplication
 public class JavaSpringApplication {
@@ -26,11 +27,18 @@ public class JavaSpringApplication {
 		System.out.println(coach.getDailyWorkout());
 		System.out.println(coach.getFortune());
 		
+		coach = classPathXmlApplicationContext.getBean("myGolfCoach", Coach.class);
+		
+		System.out.println(coach.getDailyWorkout());
+		System.out.println(coach.getFortune());
+		
 		coach = classPathXmlApplicationContext.getBean("myCricketCoach", Coach.class);
 		
 		System.out.println(coach.getDailyWorkout());
 		System.out.println(coach.getFortune());
 		
+		PrototypeBean prototypeBean = classPathXmlApplicationContext.getBean("MyProtoTypeBean",PrototypeBean.class);
+		prototypeBean.getType();
 		
 		classPathXmlApplicationContext.close();
 		

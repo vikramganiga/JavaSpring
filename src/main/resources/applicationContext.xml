@@ -27,6 +27,11 @@
 	</bean>
 	
 	<bean id="MyProtoTypeBean" class="com.xml.config.PrototypeBean"></bean>
+	
+	<!-- annotation based configuration - bean scan -->
+	<context:component-scan base-package="com.annotation.config"></context:component-scan>
+	<context:component-scan base-package="com.annotation.autowire.config"></context:component-scan>
+	<context:component-scan base-package="com.annotation.autowire.qualifier"></context:component-scan>
 
 </beans>
 

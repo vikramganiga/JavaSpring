@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.annotation.autowire.config.DependedClass;
+import com.annotation.autowire.qualifier.JuiceCenter;
+import com.annotation.config.TestSpringComponent;
 import com.xml.config.Coach;
 import com.xml.config.PrototypeBean;
 
@@ -13,12 +16,7 @@ public class JavaSpringApplication {
 	public static void main(String[] args) {
 		//SpringApplication.run(JavaSpringApplication.class, args);
 		
-		/** 
-		 * Example for XML based configuration.
-		 * 
-		 * 1. Dependency injection
-		 * 
-		 */
+		/*  XML based bean configuration and  Dependency injection */
 		
 		ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
@@ -39,6 +37,23 @@ public class JavaSpringApplication {
 		
 		PrototypeBean prototypeBean = classPathXmlApplicationContext.getBean("MyProtoTypeBean",PrototypeBean.class);
 		prototypeBean.getType();
+		
+		/* Annotation based component scan, context configuration */
+		
+		TestSpringComponent  testSpringComponent = classPathXmlApplicationContext.getBean("testSpringComponent",TestSpringComponent.class);
+		testSpringComponent.getMessage();
+		
+		/* Autowired  */
+		
+		DependedClass dependedClass = classPathXmlApplicationContext.getBean("dependedClass", DependedClass.class);	
+		dependedClass.getWiredMessage();
+		dependedClass.getMessage();
+		
+		/* Autowired with Qualified */
+		
+		JuiceCenter juiceCenter = classPathXmlApplicationContext.getBean("juiceCenter", JuiceCenter.class);
+		juiceCenter.getJuice();
+		
 		
 		classPathXmlApplicationContext.close();
 		
